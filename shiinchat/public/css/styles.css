@@ -1,0 +1,16 @@
+#feedMain-container{
+    display:grid;
+    grid-template-areas:
+    'section section create create create trending'
+    'section section main main main trending'
+    'section section main main main trending'
+    'section section main main main trending';
+    gap:10px;
+    padding:10px;
+    height:100vh;
+}
+
+#feedMain-main-container{
+    border: solid 1px #000;
+    grid-area: main;
+}
