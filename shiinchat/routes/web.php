@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -26,6 +27,7 @@ Route::get('/feed', [BlogController::class, 'index'])
 
 Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
 
+Route::get('/comments', [BlogController::class, 'show'])->name('comments.show');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

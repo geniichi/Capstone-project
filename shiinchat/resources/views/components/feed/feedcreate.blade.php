@@ -5,7 +5,7 @@
       <div  class="form-group">
           <input
             type="text"
-            class="form-control shadow-none p-1 h-50 rounded-0"
+            class="form-control shadow-none p-1 rounded-0"
             id="exampleFormControlInput1"
             placeholder="Input Title"
             name="title"
@@ -13,13 +13,13 @@
       </div>
       <div class="form-group">
           <textarea
-            class="form-control shadow-none p-1 h-50 rounded-0"
+            class="form-control shadow-none p-1 rounded-0"
             id="content"
             rows="3"
             name="content"
             placeholder='Input content'
           ></textarea>
       </div>
-      <button class='btn btn-outline-primary col-12 shadow-none p-1 h-50 rounded-0'>Post</button>
+      <button class='btn btn-outline-primary col-12 shadow-none p-1 rounded-0'>Post</button>
     </form>
   </section>
