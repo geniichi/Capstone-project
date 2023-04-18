@@ -3,9 +3,12 @@
 
 @section('content')
     @include('components.navbar')
-    <main>
-        <section>
+    <main id="feedMain-container">
+        <section id="feedMain-main-container">
             @include('components.feed.feedmain')
+        </section>
+        <section id="feedCreate-main-container">
+            @include('components.feed.feedcreate')
         </section>
     </main>
 @endsection

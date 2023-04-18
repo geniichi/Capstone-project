@@ -22,16 +22,18 @@
               <a href="/books" class="link text-light text-decoration-none mx-3">Books</a>
             </li>
           </ul>
-          <div class="
-              p-0
-              my-2 ml-3
-              ml-md-3
-              ml-md-0
-              mt-lg-1"
-              id="authentication-container"
-            >
-            <a href="/login" class="btn btn-outline-light mr-3 my-0 ml-0 ml-lg-3 shadow-none">Login</a>
-            <a href="/register" class="btn btn-outline-dark ml-0 my-0 shadow-none">Sign Up</a>
+          <div class="p-0 my-2 ml-3 ml-md-3 ml-md-0 mt-lg-1" id="authentication-container">
+              @guest
+                  <a href="{{ route('login') }}" class="btn btn-outline-light mr-3 my-0 ml-0 ml-lg-3 shadow-none">Login</a>
+                  <a href="{{ route('register') }}" class="btn btn-light ml-0 my-0 shadow-none">Sign Up</a>
+              @else
+                  <a href="{{ route('logout') }}" class="btn btn-outline-light mr-3 my-0 ml-0 ml-lg-3 shadow-none" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                      Logout
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+              @endguest
           </div>
           </div>
       </nav>

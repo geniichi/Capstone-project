@@ -4,17 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $blogs = Blog::all();
-        return view('feed', compact('blogs'));
+        // Check if the form has been submitted
+        if ($request->isMethod('post')) {
+            // Validate the request data
+            $request->validate([
+                'title' => 'required|max:255',
+                'content' => 'required',
+            ]);
+
+            // Create a new Blog instance and save it to the database
+            $blog = new Blog();
+            $blog->title = $request->input('title');
+            $blog->content = $request->input('content');
+            $blog->user_id = Auth::user()->id;
+            $blog->save();
+
+            // Redirect back to the feed page
+            return redirect()->route('feed.index');
+        }
+
+        // Fetch all blogs from the database
+        $blogs = Blog::with('user')->orderBy('created_at', 'desc')->get();
+
+        // Pass the blogs data to the view
+        return view('feed', ['blogs' => $blogs]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -29,8 +53,23 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
+
+        // Create a new Blog model with the request data
+        $blog = new Blog;
+        $blog->title = $request->title;
+        $blog->content = $request->content;
+        $blog->user_id = Auth::user()->id;
+        $blog->save();
+
+        // Redirect the user back to the feed with a success message
+        return redirect()->route('feed.index')->with('success', 'Blog created successfully!');
     }
+
 
     /**
      * Display the specified resource.

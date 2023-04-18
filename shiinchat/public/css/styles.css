@@ -14,3 +14,10 @@
     border: solid 1px #000;
     grid-area: main;
 }
+
+#feedCreate-main-container{
+    border:1px solid #000;
+    height:15rem;
+    grid-area: create;
+    background-image:linear-gradient(to right bottom,pink, violet);
+}
