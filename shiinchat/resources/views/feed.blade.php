@@ -13,7 +13,7 @@
             @include('components.feed.feedtrending', ['blogs' => $blogsTrending])
         </section>
         <section id="feedOthers-main-container">
-            @include('components.feed.feedothers')
+            @include('components.feed.feedothers', ['blogs' => $blogsSearch])
         </section>
     </main>
 @endsection

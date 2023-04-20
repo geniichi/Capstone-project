@@ -43,20 +43,43 @@ class BlogController extends Controller
             ->orderByDesc('created_at')
             ->get();
 
+        // Show all blogs by default
+        $blogsSearch = Blog::with('user')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        // If there is a search query, show the search results instead
+        if ($query = request('query')) {
+            $blogsSearch = Blog::with('user')
+                ->where('title', 'like', "%$query%")
+                ->orderBy('created_at', 'desc')
+                ->get();
+        }
 
         return view('feed', [
             'blogsMain' => $blogsMain,
             'blogsTrending' => $blogsTrending,
+            'blogsSearch' => $blogsSearch,
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function search(Request $request)
     {
-        //
+        // Get the search query from the request
+        $query = $request->input('query');
+
+        // Search for blogs that match the query
+        $blogs = Blog::with('user')
+            ->where('title', 'like', "%$query%")
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        // Pass the results to the view
+        return view('feed', [
+            'blogs' => $blogs,
+        ]);
     }
+
 
     /**
      * Store a newly created resource in storage.

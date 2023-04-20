@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/blogs/{blog}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::get('/comments', [CommentController::class, 'show'])->name('comments.show');
     Route::post('/blogs/{blog}/like', [LikeController::class, 'store'])->name('likes.store');
+
+    Route::get('/feed/search', [BlogController::class, 'index'])->name('feed.search');
 });
 
 Auth::routes();

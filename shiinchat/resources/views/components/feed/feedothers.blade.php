@@ -1,10 +1,14 @@
-<form>
-    <div class="form-group">
-        <input type="text" name="query" class="form-control" placeholder="Search...">
-    </div>
-    <button type="submit" class="btn btn-primary">Search</button>
+<form method="GET" action="{{ route('feed.search') }}">
+    <input type="text" name="query" placeholder="Search blogs...">
+    <button type="submit">Search</button>
 </form>
 
-<h1>Search Results for " "</h1>
 
-{{-- put iteration of search query here --}}
+@if ($blogs->count() > 0)
+    @foreach ($blogs as $blog)
+        <p>{{ $blog -> title }}</p>
+        <p>{{ $blog -> content }}</p>
+    @endforeach
+@else
+    <p>No blogs found for your search query.</p>
+@endif
