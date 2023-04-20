@@ -5,8 +5,9 @@
             <h3>{{ $blog->title }}</h3>
             <p>{{ $blog->content }}</p>
         </div>
+            @include('components.feed.feedlike')
         <div>
-            @include('components.feed.feedcomment')
+            @include('components.feed.feedcomment', ['blog' => $blog])
         </div>
     </div>
 

@@ -30,18 +30,23 @@ class CommentController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $this->validate($request, [
-            'comment' => 'required|min:5|max:2000'
+        $request->validate([
+            'comment' => 'required|string',
         ]);
 
-        $comment = new Comment();
-        $comment->comment = $request->input('comment');
+        $blog = Blog::find($id);
+        $comment = new Comment([
+            'comment' => $request->input('comment'),
+        ]);
         $comment->user_id = Auth::id();
-        $comment->blog_id = $id;
-        $comment->save();
+        $blog->comments()->save($comment);
 
-        return redirect()->route('feed.index');
+        return redirect()->back();
     }
+
+
+
+
 
 
     /**

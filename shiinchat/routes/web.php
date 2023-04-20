@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +21,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/feed', [BlogController::class, 'index'])
-    ->name('feed.index')
-    ->middleware('auth');
-
-Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
-
-Route::get('/comments', [BlogController::class, 'show'])->name('comments.show');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/feed', [BlogController::class, 'index'])->name('feed.index');
+    Route::post('/blogs/{blog}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
+    Route::get('/comments', [CommentController::class, 'show'])->name('comments.show');
+    Route::post('/blogs/{blog}/like', [LikeController::class, 'store'])->name('likes.store');
+});
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

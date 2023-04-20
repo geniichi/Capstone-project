@@ -76,7 +76,8 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        $blog = Blog::with('user')->withCount('likes')->findOrFail($blog->id);
+        return view('blogs.show', compact('blog'));
     }
 
     /**

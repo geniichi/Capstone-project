@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Like;
 use Illuminate\Http\Request;
+use App\Models\Blog;
 
 class LikeController extends Controller
 {
@@ -26,10 +27,16 @@ class LikeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Blog $blog)
     {
-        //
+        $like = new Like;
+        $like->blog_id = $blog->id;
+        $like->user_id = auth()->user()->id;
+        $like->save();
+
+        return back();
     }
+
 
     /**
      * Display the specified resource.
