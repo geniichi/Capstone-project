@@ -32,13 +32,23 @@ class BlogController extends Controller
             return redirect()->route('feed.index');
         }
 
-        // Fetch all blogs from the database
-        $blogs = Blog::with('user')->orderBy('created_at', 'desc')->get();
-
         // Pass the blogs data to the view
-        return view('feed', ['blogs' => $blogs]);
-    }
+        $blogsMain = Blog::with('user')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
+        $blogsTrending = Blog::with('user')
+            ->withCount('likes')
+            ->orderByDesc('likes_count')
+            ->orderByDesc('created_at')
+            ->get();
+
+
+        return view('feed', [
+            'blogsMain' => $blogsMain,
+            'blogsTrending' => $blogsTrending,
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.

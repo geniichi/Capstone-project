@@ -2,7 +2,7 @@
     <h5 class="text-left">CREATE BLOG</h5>
     <form action="{{ route('blogs.store') }}" method="POST">@csrf
 
-      <div  class="form-group">
+      <div class="form-group">
           <input
             type="text"
             class="form-control shadow-none p-1 rounded-0"

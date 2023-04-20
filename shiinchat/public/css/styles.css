@@ -1,10 +1,10 @@
 #feedMain-container{
     display:grid;
     grid-template-areas:
-    'section section create create create trending'
-    'section section main main main trending'
-    'section section main main main trending'
-    'section section main main main trending';
+    'others others create create create trending'
+    'others others main main main trending'
+    'others others main main main trending'
+    'others others main main main trending';
     gap:10px;
     padding:10px;
     height:100vh;
@@ -20,4 +20,14 @@
     height:15rem;
     grid-area: create;
     background-image:linear-gradient(to right bottom,pink, violet);
+}
+
+#feedTrending-main-container{
+    border: solid 1px #000;
+    grid-area: trending;
+}
+
+#feedOthers-main-container{
+    border: solid 1px #000;
+    grid-area: others;
 }
