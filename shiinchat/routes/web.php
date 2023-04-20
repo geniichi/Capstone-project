@@ -23,8 +23,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/feed', [BlogController::class, 'index'])->name('feed.index');
-    Route::post('/blogs/{blog}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
+    Route::post('/blogs/{blog}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::get('/comments', [CommentController::class, 'show'])->name('comments.show');
     Route::post('/blogs/{blog}/like', [LikeController::class, 'store'])->name('likes.store');
 });

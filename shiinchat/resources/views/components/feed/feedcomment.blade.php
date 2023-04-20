@@ -12,7 +12,9 @@
     </section>
 
     <h5>Comments</h5>
-        @foreach(\App\Models\Comment::where('blog_id', $blog->id)->get() as $comment)
+        @foreach(\App\Models\Comment::where('blog_id', $blog->id)->with('user')->get() as $comment)
+            <caption>{{ $comment->user->name }}</caption>
             <p>{{ $comment->comment }}</p>
         @endforeach
+
 </div>
