@@ -1,33 +1,275 @@
+html{
+    min-width:350px;
+}
+.shiinChat-chat{
+    background-image:linear-gradient(to right bottom,rgb(16, 160, 227), violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+textarea{
+    resize:none;
+}
+.btn {
+    box-shadow:none;
+}
 #feedMain-container{
     display:grid;
-    grid-template-areas:
-    'others others create create create trending'
-    'others others main main main trending'
-    'others others main main main trending'
-    'others others main main main trending';
-    gap:10px;
-    padding:10px;
     height:100vh;
 }
-
-#feedMain-main-container{
-    border: solid 1px #000;
-    grid-area: main;
-}
-
+/* FEEDCREATE */
 #feedCreate-main-container{
-    border:1px solid #000;
-    height:15rem;
-    grid-area: create;
-    background-image:linear-gradient(to right bottom,pink, violet);
+    background-image:linear-gradient(to right bottom,rgb(16, 160, 227), violet);
+    border-radius:25px;
+}
+#feedMain-main-container{
+    border-radius:15px;
+}
+#feedOthers-main-container > div {
+    background-image:linear-gradient(to right bottom,rgb(16, 160, 227), violet);
+    border-radius:15px;
+}
+#searchedBlogs{
+    backdrop-filter: blur(10px);
+    background-color:#ffffff2d;
 }
 
-#feedTrending-main-container{
-    border: solid 1px #000;
-    grid-area: trending;
+/* Extra Small (xs) */
+@media (max-width: 575.98px) {
+    #feedMain-container{
+        grid-template-areas:
+        'others others others others others'
+        'create create create create create'
+        'main main main main main'
+        'main main main main main';
+        gap:10px;
+        padding:10px;
+    }
+    #feedMain-main-container{grid-area: main;}
+    #feedOthers-main-container{
+        grid-area: others;
+        padding:0;
+    }
+    #feedCreate-main-container{
+        height:15rem;
+        grid-area: create;
+    }
+    #feedTrending-main-container{
+        display:none;
+    }
+    #feedTrending-main-container > section{
+        position:sticky;
+        top:5px;
+        padding:15px;
+        background-color:#313135;
+        border:3px solid #0dcaf0;
+        border-radius:18px;
+        width:16rem;
+        height:90vh;
+    }
+    #feedOthers-main-container > div {
+        position:sticky;
+        top:5px;
+        padding:15px;
+    }
+}
+/* Small (sm) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #feedMain-container{
+        grid-template-areas:
+        'others others others others others'
+        'create create create create create'
+        'main main main main main'
+        'main main main main main';
+        gap:10px;
+        padding:10px;
+    }
+    #feedMain-main-container{grid-area: main;}
+    #feedOthers-main-container{
+        grid-area: others;
+        padding:0;
+    }
+    #feedCreate-main-container{
+        height:15rem;
+        grid-area: create;
+    }
+    #feedTrending-main-container{
+        display:none;
+    }
+    #feedTrending-main-container > section{
+        position:sticky;
+        top:5px;
+        padding:15px;
+        background-color:#313135;
+        border:3px solid #0dcaf0;
+        border-radius:18px;
+        width:16rem;
+        height:90vh;
+    }
+    #feedOthers-main-container > div {
+        position:sticky;
+        top:5px;
+        padding:15px;
+    }
+}
+/* Medium (md) */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    #feedMain-container{
+        grid-template-areas:
+        'others others others others others trending'
+        'create create create create create trending'
+        'main main main main main trending'
+        'main main main main main trending';
+        gap:10px;
+        padding:10px;
+    }
+    #feedMain-main-container{grid-area: main;}
+    #feedOthers-main-container{
+        grid-area: others;
+        padding:0;
+    }
+    #feedCreate-main-container{
+        height:15rem;
+        grid-area: create;
+    }
+    #feedTrending-main-container{
+        width:16rem;
+        grid-area: trending;
+    }
+    #feedTrending-main-container > section{
+        position:sticky;
+        top:5px;
+        padding:15px;
+        background-color:#313135;
+        border:3px solid #0dcaf0;
+        border-radius:18px;
+        width:16rem;
+        height:90vh;
+    }
+    #feedOthers-main-container > div {
+        position:sticky;
+        top:5px;
+        padding:15px;
+    }
 }
 
-#feedOthers-main-container{
-    border: solid 1px #000;
-    grid-area: others;
+/* Large (lg) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    #feedMain-container{
+        grid-template-areas:
+        'others others create create create trending'
+        'others others main main main trending'
+        'others others main main main trending'
+        'others others main main main trending';
+        gap:10px;
+        padding:10px;
+    }
+    #feedMain-main-container{grid-area: main;}
+    #feedOthers-main-container{
+        grid-area: others;
+        padding:0;
+    }
+    #feedCreate-main-container{
+        height:15rem;
+        grid-area: create;
+    }
+    #feedTrending-main-container{
+        width:18rem;
+        grid-area: trending;
+    }
+    #feedTrending-main-container > section{
+        position:sticky;
+        top:5px;
+        padding:15px;
+        background-color:#313135;
+        border:3px solid #0dcaf0;
+        border-radius:18px;
+    }
+    #feedOthers-main-container > div {
+        position:sticky;
+        top:5px;
+        width:18rem;
+        padding:15px;
+    }
+}
+/* Extra Large (xl) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    #feedMain-container{
+        grid-template-areas:
+        'others others create create create trending'
+        'others others main main main trending'
+        'others others main main main trending'
+        'others others main main main trending';
+        gap:10px;
+        padding:10px;
+    }
+    #feedMain-main-container{grid-area: main;}
+    #feedOthers-main-container{
+        grid-area: others;
+        padding:0;
+    }
+    #feedCreate-main-container{
+        height:15rem;
+        grid-area: create;
+    }
+    #feedTrending-main-container{
+        width:18rem;
+        grid-area: trending;
+    }
+    #feedTrending-main-container > section{
+        position:sticky;
+        top:5px;
+        padding:15px;
+        background-color:#313135;
+        border:3px solid #0dcaf0;
+        border-radius:18px;
+        height:90vh;
+    }
+    #feedOthers-main-container > div {
+        position:sticky;
+        top:5px;
+        width:18rem;
+        padding:15px;
+        height:98vh;
+    }
+}
+/* Extra Extra Large (xxl) */
+@media (min-width: 1400px) {
+    #feedMain-container{
+        grid-template-areas:
+        'others others create create create trending'
+        'others others main main main trending'
+        'others others main main main trending'
+        'others others main main main trending';
+        gap:10px;
+        padding:10px;
+    }
+    #feedMain-main-container{grid-area: main;}
+    #feedCreate-main-container{
+        height:15rem;
+        grid-area: create;
+    }
+    #feedTrending-main-container{
+        width:23rem;
+        grid-area: trending;
+    }
+    #feedTrending-main-container > section{
+        position:sticky;
+        top:5px;
+        padding:15px;
+        background-color:#313135;
+        border:3px solid #0dcaf0;
+        border-radius:18px;
+        height:90vh;
+    }
+    #feedOthers-main-container{
+        grid-area: others;
+        width:19rem;
+    }
+    #feedOthers-main-container > div {
+        position:sticky;
+        top:5px;
+        width:20rem;
+        padding:15px;
+        height:98vh;
+    }
 }

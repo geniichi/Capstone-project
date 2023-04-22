@@ -1,9 +1,9 @@
-<div>
+
     @foreach ($blogs as $blog)
-    <div class="border m-4 p-3">
+    <div class="mb-4 p-3 bg-dark rounded" style="border: 2px solid #6a6868">
         <div>
-            <h3>{{ $blog->title }}</h3>
-            <p>{{ $blog->content }}</p>
+            <h3 class="text-light">{{ $blog->title }}</h3>
+            <p class="text-light">{{ $blog->content }}</p>
         </div>
             @include('components.feed.feedlike')
         <div>
@@ -12,4 +12,3 @@
     </div>
 
     @endforeach
-</div>
