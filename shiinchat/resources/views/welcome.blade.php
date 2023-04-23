@@ -7,7 +7,10 @@
         <a class="text-decoration-none" href="/feed">
             <h1 class="text-primary mb-0">Welcome to Shiin<span class="shiinChat-chat text-white">Chat</span></h1>
         </a>
-        <p class="text-white mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p class="text-white mt-3">
+            ShiinChat is a lively online community for sharing thoughts, ideas, and experiences on various
+            topics in a modern and user-friendly interface.
+        </p>
         <a href="/feed" class="btn btn-outline-primary no-shadow">Get Started</a>
     </div>
 

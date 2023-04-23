@@ -14,6 +14,21 @@
     </button>
 </form>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
 $(document).ready(function () {
     // get the alert element
@@ -29,7 +44,7 @@ $(document).ready(function () {
             setTimeout(() => {
                 alertEl.remove();
             }, 500);
-        }, 2000);
+        }, 1000);
     }
 });
 

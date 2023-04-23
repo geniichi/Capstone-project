@@ -14,11 +14,11 @@
     </style>
 
     <section  id="feedCreate-main-container" class='px-4 py-2 rounded'>
-        <h5 class="text-left">ADD COMMENT</h5>
+        <h5 class="text-left text-dark">ADD COMMENT</h5>
         <form method="POST" action="{{ route('comments.store', $blog->id) }}">
             @csrf
             <div class="form-group">
-                <label for="comment" class="font-weight-bold">Comment:</label>
+                <label for="comment" class="font-weight-bold text-dark">Comment:</label>
                 <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
             </div>
             <button type="submit" class="btn btn-success btn-sm">Add Comment</button>
@@ -37,8 +37,8 @@
 
             @foreach(\App\Models\Comment::where('blog_id', $blog->id)->with('user')->skip(3)->take(PHP_INT_MAX)->get() as $comment)
                 <div class="comment">
-                    <caption>{{ $comment->user->name }}</caption>
-                    <p>{{ $comment->comment }}</p>
+                    <p class="text-light m-0 p-0">{{ $comment->user->name }}</p>
+                    <p class="text-light bg-secondary border m-2 p-2 rounded">{{ $comment->comment }}</p>
                 </div>
             @endforeach
 
@@ -51,29 +51,7 @@
     </div>
 
     <script>
-        const showMoreBtn = document.getElementById('show-more-comments-btn');
-        const showLessBtn = document.getElementById('show-less-comments-btn');
-        var comments = document.getElementsByClassName('comment');
 
-        if(comments.length == 0){
-            showMoreBtn.style.display = 'none';
-        }
-        showMoreBtn.addEventListener('click', function() {
-            for (var i = 0; i < comments.length; i++) {
-                comments[i].classList.add('show');
-            }
-            showMoreBtn.style.display = 'none';
-            showLessBtn.style.display = 'inline-block';
-        });
-        showLessBtn.addEventListener('click', function() {
-            for (var i = 3; i < comments.length; i++) {
-                comments[i].classList.remove('show');
-            }
-            showMoreBtn.style.display = 'inline-block';
-            showLessBtn.style.display = 'none';
-        });
-        showLessBtn.style.display = 'none';
-        showMoreBtn.parentNode.insertBefore(showLessBtn, showMoreBtn.nextSibling);
     </script>
 
 </div>

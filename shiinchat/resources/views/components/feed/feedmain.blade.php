@@ -1,5 +1,5 @@
 
-    @foreach ($blogs as $blog)
+@foreach ($blogs as $blog)
     <div class="mb-4 p-3 bg-dark rounded" style="border: 2px solid #6a6868">
         <div>
             <h3 class="text-light">{{ $blog->title }}</h3>
@@ -10,5 +10,4 @@
             @include('components.feed.feedcomment', ['blog' => $blog])
         </div>
     </div>
-
-    @endforeach
+@endforeach
